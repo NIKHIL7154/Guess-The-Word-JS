@@ -4,12 +4,15 @@ const textshow =document.querySelector('.blankdiv')
 const alpha =document.querySelector('.alphas')
 const livediv=document.querySelector('.livescontainer')
 
+
 createbuttons()
-var livecounter=0
+
+var livecounter=5
 var winstr=''
 
 function updatewin(val){
     winstr=winstr.split(val).join('')
+
 }
 
 function enablekeys(wor){
@@ -28,25 +31,28 @@ function enablekeys(wor){
                 ele.target.remove()
                 if(winstr==''){
                     alert('You won bacha')
+                    restartgame()
                 }
 
             }else{
                 const liveobj=document.getElementById('liveid'+livecounter);
                 liveobj.classList.add('livesfadeaway')
                 setTimeout(deletediv,700)
-
                 ele.target.remove()
 
             }
 
-    })
+        })
 
-});
+    });
 }
 function deletediv(){
     const liveobj=document.getElementById('liveid'+livecounter);
     liveobj.remove()
     livecounter=livecounter-1;
+    if(livecounter==0){
+        document.querySelector('.gameoverdiv').style.display='flex'
+    }
 }
 
 function countchars(char,word){
@@ -73,15 +79,14 @@ function livesadder(){
     for(i=0;i<5;i++){
         let live=document.createElement('div')
         live.className='lives'
-        live.id='liveid'+i
+        live.id='liveid'+(i+1)
         liveptag=document.createElement('p')
         liveptag.innerHTML='❤️'
         live.appendChild(liveptag)
         livediv.appendChild(live)
 
-
     }
-    livecounter=4
+    livecounter=5
 
 }
 
@@ -128,7 +133,6 @@ function restartgame(){
             }else{
                 leth2.innerHTML='.'
             }
-
             hrtag=document.createElement('hr')
             hell.appendChild(leth2)
             hell.appendChild(hrtag)
@@ -136,3 +140,9 @@ function restartgame(){
         }
     }
 }
+function playagainfromGO(){
+    let aa=document.querySelector('.gameoverdiv')
+    aa.style.display='none'
+    restartgame()
+}
+restartgame()
