@@ -4,7 +4,6 @@ body, html{
     margin: 0;
     height: 100%;
     width: 100%;
-    
 }
 
 body *{
@@ -191,11 +190,49 @@ body *{
 
 .lifediv{
     height: 50px;
-    background-color: blue;
+    /* background-color: blue; */
     width: 100%;
     margin: 15px 0px;
     display: flex;
-    justify-content: center;
+    padding-left: 30px;
     align-items: center;
+
+}
+
+.lives{
+    width: 38px;
+    height: 38px;
+    /* background-color: beige; */
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     
+
+}
+.livesfadeaway{
+    animation: 0.8s livefade linear;
+    -webkit-animation: 0.8s livefade linear;
+}
+
+@keyframes livefade {
+    0%{
+        opacity: 1;
+        top: 0px;
+    }
+    50%{
+        opacity: 0.5;
+        top: 25px;
+        
+    }
+    100%{
+        opacity: 0;
+        top: 50px;
+    }
+
+}
+.lives p{
+    margin: 0;
+    font-size: 28px;
 }

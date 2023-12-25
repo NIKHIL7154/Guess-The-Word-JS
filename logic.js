@@ -2,8 +2,10 @@ const words=["ELEPHANT",'DECIDE','PERSISTENT','OCEAN','CHILDREN','PROHIBITED','S
 
 const textshow =document.querySelector('.blankdiv')
 const alpha =document.querySelector('.alphas')
-createbuttons()
+const livediv=document.querySelector('.livescontainer')
 
+createbuttons()
+var livecounter=0
 var winstr=''
 
 function updatewin(val){
@@ -22,19 +24,29 @@ function enablekeys(wor){
                     i.innerHTML=value
                 })
                 updatewin(value)
-                
+
                 ele.target.remove()
                 if(winstr==''){
                     alert('You won bacha')
                 }
-                
+
             }else{
-                alert('Wrong input bhai')
+                const liveobj=document.getElementById('liveid'+livecounter);
+                liveobj.classList.add('livesfadeaway')
+                setTimeout(deletediv,700)
+
                 ele.target.remove()
+
             }
-            
+
     })
+
 });
+}
+function deletediv(){
+    const liveobj=document.getElementById('liveid'+livecounter);
+    liveobj.remove()
+    livecounter=livecounter-1;
 }
 
 function countchars(char,word){
@@ -53,20 +65,38 @@ function createbuttons() {
         hell.innerHTML=letters[i]
         alpha.appendChild(hell)
     }
-    
+}
+
+function livesadder(){
+    livediv.innerHTML=''
+    let i=0
+    for(i=0;i<5;i++){
+        let live=document.createElement('div')
+        live.className='lives'
+        live.id='liveid'+i
+        liveptag=document.createElement('p')
+        liveptag.innerHTML='❤️'
+        live.appendChild(liveptag)
+        livediv.appendChild(live)
+
+
+    }
+    livecounter=4
+
 }
 
 
 function restartgame(){
+    livesadder()
     let firstrem = 1
     let secondrem = 1
-    
+
     textshow.innerHTML=''
     var selected=words[(Math.floor(Math.random() * words.length))]
     createbuttons()
     enablekeys(selected)
     winstr=selected.replace(/ /g,'')
-    
+
     let a=(Math.floor(Math.random() * selected.length))
     let b=(Math.floor(Math.random() * selected.length))
     for(i of selected){
@@ -86,7 +116,7 @@ function restartgame(){
                     document.getElementById('keys01'+i).remove()
                     firstrem+=1
                 }
-                
+
 
             }else if(i==selected[b]){
                 winstr=winstr.replace(i,'')
@@ -96,9 +126,9 @@ function restartgame(){
                     secondrem+=1
                 }
             }else{
-                leth2.innerHTML=''
+                leth2.innerHTML='.'
             }
-            
+
             hrtag=document.createElement('hr')
             hell.appendChild(leth2)
             hell.appendChild(hrtag)
