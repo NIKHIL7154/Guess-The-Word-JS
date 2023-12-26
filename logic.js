@@ -9,6 +9,26 @@ createbuttons()
 
 var livecounter=5
 var winstr=''
+var hintcounter=2
+
+
+function closethehint(){
+    document.querySelector('.hintdiv').style.display='none'
+}
+
+function showthehint(){
+    let a=(Math.floor(Math.random() * winstr.length))
+    if(hintcounter>0){
+        hintcounter=hintcounter-1
+        let dialog=document.querySelector('.hintdiv')
+        dialog.style.display='flex'
+        document.getElementById('h3forhint').innerHTML=("Letter is : "+winstr[a])
+        document.getElementById('h5forhintcount').innerHTML=('⚠️'+hintcounter+' Hints remaining⚠️')
+    }else{
+        alert('Sorry you have used all available hints.')
+    }
+    
+}
 
 function updatewin(val){
     winstr=winstr.split(val).join('')
@@ -92,6 +112,7 @@ function livesadder(){
 
 
 function restartgame(){
+    hintcounter=2
     livesadder()
     let firstrem = 1
     let secondrem = 1

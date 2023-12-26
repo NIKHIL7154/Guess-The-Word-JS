@@ -12,8 +12,8 @@
             <div class="gamename">Guess The Word</div>
             <div class="options">
                 <button onclick="restartgame()" class="menubt">Restart</button>
+                <button onclick="showthehint()" class="menubt">Hint</button>
                 <button class="menubt">Menu</button>
-                <button class="menubt">Hint</button>
                 <button class="menubt">Quit</button>
             </div>
             <div class="lifediv">
@@ -30,7 +30,7 @@
                         <!-- words will appear here -->
                     </div>
                 </div>
-                <div class="selectdiv">
+                <div class="selectdiv" >
                     <div class="alphas"></div>
                     <!-- Alphabet buttons will appear here -->
                 </div>
@@ -40,8 +40,20 @@
     <div class="gameoverdiv">
         <div class="gameovercontainer">
             <h3>You ran out of lives so i am declaring you a loser</h3>
-            <iframe style="border: none;" src="https://lottie.host/embed/bf428300-f78c-4b5a-b648-365da6f16262/ff1042MiEX.json"></iframe>
-            <button onclick="playagainfromGO()" id="gameoverbt">Play Again!</button>
+            <iframe class="lotteiframe" style="border: none;" src="https://lottie.host/embed/bf428300-f78c-4b5a-b648-365da6f16262/ff1042MiEX.json"></iframe>
+            <button class="dialogendbt" onclick="playagainfromGO()">Play Again!</button>
+        </div>
+        
+    </div>
+
+    <div class="hintdiv">
+        <div class="gameovercontainer">
+            <h3>I am revealing a letter for you.</h3>
+            <h3 id="h3forhint">Letter is : W</h3>
+            
+            <iframe class="lotteiframe" style="border: none;" src="https://lottie.host/embed/448cb677-bb89-43ac-95b6-f02f71a51b06/yGn8xsUNMI.json"></iframe>
+            <button class="dialogendbt" onclick="closethehint()">Continue😊</button>
+            <h5 id="h5forhintcount">⚠️0 Hints remaining⚠️</h5>
         </div>
         
     </div>
