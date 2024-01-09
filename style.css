@@ -149,7 +149,7 @@ body *{
         -o-transition: 0.3s;
 }
     .menubt:hover{
-        box-shadow: 1px 2px 10px 0.2px;
+        box-shadow: 1px 2px 10px 0.3px;
         border-radius: 15px;
         background-color: rgb(129, 129, 128);
         color: white;
