@@ -4,7 +4,8 @@ const textshow =document.querySelector('.blankdiv')
 const alpha =document.querySelector('.alphas')
 const livediv=document.querySelector('.livescontainer')
 
-
+const winaud=document.getElementById('winaudio');
+const failaud=document.getElementById('failaudio');
 createbuttons()
 
 var livecounter=5
@@ -41,7 +42,7 @@ function enablekeys(wor){
         i.addEventListener('click' , (ele)=>{
             let value=ele.target.innerHTML
             if(wor.includes(value)){
-
+                winaud.play()
                 let idss=document.querySelectorAll('#h2id'+value);
                 idss.forEach((i)=>{
                     i.innerHTML=value
@@ -55,10 +56,12 @@ function enablekeys(wor){
                 }
 
             }else{
+                failaud.play()
                 const liveobj=document.getElementById('liveid'+livecounter);
                 liveobj.classList.add('livesfadeaway')
                 setTimeout(deletediv,700)
                 ele.target.remove()
+
 
             }
 
@@ -70,6 +73,8 @@ function deletediv(){
     const liveobj=document.getElementById('liveid'+livecounter);
     liveobj.remove()
     livecounter=livecounter-1;
+    failaud.pause()
+    failaud.currentTime=0;
     if(livecounter==0){
         document.querySelector('.gameoverdiv').style.display='flex'
     }
